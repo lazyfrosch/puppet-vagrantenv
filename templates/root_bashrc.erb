@@ -3,9 +3,27 @@
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm|*-color|*-256color|screen) color_prompt=yes;;
+esac
+
 # Note: PS1 and umask are already set in /etc/profile. You should not
 # need this unless you want different defaults for root.
-PS1='\[\e]0;[\u] \h: \w\a\]\[\033[0;31m\]${debian_chroot:+($debian_chroot)}\h:\w\$\[\033[0m\] '
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[0;31m\]\h:\w\$\[\033[0m\] '
+else
+    PS1='\h:\w\$ '
+fi
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+    xterm*|rxvt*)
+        PS1="\[\e]0;[\u] \h: \w\a\]$PS1"
+        ;;
+    *)
+        ;;
+esac
 
 # umask 022
 
