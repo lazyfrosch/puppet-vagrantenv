@@ -1,0 +1,8 @@
+---
+fixtures:
+  repositories:
+    alternatives: 'https://github.com/voxpupuli/puppet-alternatives'
+    stdlib:       'https://github.com/puppetlabs/puppetlabs-stdlib'
+
+  symlinks:
+    vagrantenv: '../../..'
