@@ -20,9 +20,7 @@ class vagrantenv::tools
     default  => 'vim',
   }
 
-  package { 'vim':
-    name => $_vim_package,
-  }
+  ensure_packages([$_vim_package])
 
   if $::osfamily == 'Debian' {
     alternatives { 'editor':
@@ -38,8 +36,6 @@ class vagrantenv::tools
     default => 'mlocate',
   }
 
-  package { 'mlocate':
-    name => $_mlocate_package,
-  }
+  ensure_packages([$_mlocate_package])
   # LOCATE END
 }
