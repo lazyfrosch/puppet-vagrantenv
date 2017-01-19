@@ -1,4 +1,4 @@
-<%- if scope.lookupvar('::lsbdistdescription') -%>
+<%- if scope.exist?('::lsbdistdescription') -%>
 <%= scope.lookupvar('::lsbdistdescription') -%>
 <% else %>
 <%= scope.lookupvar('::operatingsystem') %> <%= scope.lookupvar('::operatingsystemrelease') -%>
