@@ -21,6 +21,8 @@ matrix:
   - rvm: 2.2.6
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.1.10
+    env: PUPPET_VERSION="~> 4.0" CHECK=build DEPLOY_TO_FORGE=yes
+  - rvm: 2.1.10
     env: PUPPET_VERSION="~> 4.0" CHECK=test
   - rvm: 2.1.10
     env: PUPPET_VERSION="~> 3.8" STRICT_VARIABLES="yes" FUTURE_PARSER="yes" CHECK=test
@@ -38,16 +40,16 @@ branches:
   - /^v\d/
 notifications:
   email: false
-#deploy:
-#  provider: puppetforge
-#  deploy:
-#    branch: master
-#  user: someuser
-#  password:
-#    secure: "somepasswordhash"
-#  on:
-#    tags: true
-    # all_branches is required to use tags
-#    all_branches: true
-    # Only publish the build marked with "DEPLOY_TO_FORGE"
-#    condition: "$DEPLOY_TO_FORGE = yes"
+deploy:
+  provider: puppetforge
+  deploy:
+    branch: master
+  user: lazyfrosch
+  password:
+    secure: "Xeo/mrQe8CN794C32TINuaWfmK01IvQu4T2govdM/ogzuMbJlB2vcyuWMNqyK3IkZjfmSn0kNK5W/jnRli0sHdg0x+R2FvjNCK8gu73VArwGdLSul8whnYcaUfu0fFX1F0LXqKtDe4JnQr7Xv6TuezZ2K2wC0H7KHfKOq4TkAW7tiDoVfZsGkmiBMu2gCz3akvdWfIEV9LR+A5qlEPpqxcD8GOAp5P7XQYGbQ858p7xmAHLUuTVcQApwXgX4j6ZLnxy+nksMXckg4V9A/pwcqWEEhFE8P1ZPiDky3x2s4Pz3/9hEsSqQa9caDLPLrpynTHJeu/TdcrxqGXPWaWwg+/R9jfLGkFvP4aEv2zv+cr1rBVMVuVfbWFGqTxzFHvZt+pafKdQz0SYZ6LZ/+7eL4ZTen7+vyyNncwVqumc5CVtYt3nimXYVbGXEFhF/xRNmLs4bdsGrAPG0eEAPIp3VpLfDTpUMzLbpfdbZW5OX2+12DKnm8gya+YTC1khqEP0K9tJn7idRNDCyN6ciZwY41vlswzEzmbMI0hvjdkXOcjgCW7r4YXKuv56bbE+khYaXzQLzAwKsXfvD6MV/+x/mHlyxZG3dUtpOi6+CA75ujKVxh9HmOw/afKVvEDfuT3oGKwwFPismehk6mkpmJw8+UoOFyi0e0yku+xqeNmmBRWE="
+  on:
+    tags: true
+   # all_branches is required to use tags
+    all_branches: true
+   # Only publish the build marked with "DEPLOY_TO_FORGE"
+    condition: "$DEPLOY_TO_FORGE = yes"
