@@ -1,6 +1,11 @@
 Vagrant Environment Puppet Module
 =================================
 
+[![Puppet Forge](http://img.shields.io/puppetforge/v/lazyfrosch/vagrantenv.svg)](https://forge.puppetlabs.com/lazyfrosch/vagrantenv)
+[![Build Status](https://travis-ci.org/lazyfrosch/puppet-vagrantenv.png?branch=master)](https://travis-ci.org/lazyfrosch/puppet-vagrantenv)
+[![Github Tag](https://img.shields.io/github/tag/lazyfrosch/puppet-vagrantenv.svg)](https://github.com/lazyfrosch/puppet-vagrantenv)
+[![Puppet Forge Downloads](http://img.shields.io/puppetforge/dt/lazyfrosch/vagrantenv.svg)](https://forge.puppetlabs.com/lazyfrosch/vagrantenv)
+
 Make the Vagrant box pretty, it prettifies your vagrant box in:
 
 * issue / motd
