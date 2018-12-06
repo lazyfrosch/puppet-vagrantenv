@@ -1,15 +1,29 @@
-source 'https://rubygems.org'
+source ENV['GEM_SOURCE'] || 'https://rubygems.org'
 
-gem 'puppet', ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'].to_s : '>= 3.8'
-
-gem 'puppetlabs_spec_helper', '>= 0.1.0'
-gem 'puppet-lint', '>= 0.3.2'
-gem 'facter', '>= 1.7.0'
-gem 'rspec-puppet-facts', '>= 1.6.0'
+puppetversion = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : ['>= 3.3']
 gem 'metadata-json-lint'
+gem 'puppet', puppetversion
+gem 'facter', '>= 1.7.0'
 
-# json > 2.0.1 is not compatible with Ruby 1.9
-if RUBY_VERSION < '2.0.0'
-  gem 'json', '< 2'
-  gem 'json_pure', '< 2'
+group :test do
+  gem 'puppetlabs_spec_helper', '>= 1.2.0'
+  gem 'rspec-puppet'
+  gem 'rspec-puppet-facts', '>= 1.8.0'
+
+  gem 'puppet-lint', '>= 1.0.0'
+  gem 'puppet-lint-leading_zero-check',                             :require => false
+  gem 'puppet-lint-trailing_comma-check',                           :require => false
+  gem 'puppet-lint-version_comparison-check',                       :require => false
+  gem 'puppet-lint-classes_and_types_beginning_with_digits-check',  :require => false
+  gem 'puppet-lint-unquoted_string-check',                          :require => false
+  gem 'puppet-lint-variable_contains_upcase',                       :require => false
+end
+
+# rspec must be v2 for ruby 1.8.7
+if RUBY_VERSION >= '1.8.7' && RUBY_VERSION < '1.9'
+  gem 'rspec', '~> 2.0'
+  gem 'rake', '~> 10.0'
+else
+  # rubocop requires ruby >= 1.9
+  #gem 'rubocop'
 end
